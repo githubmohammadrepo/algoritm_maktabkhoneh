@@ -3,29 +3,35 @@
 $tasks = Array(
     Array(
         'title'=>'one',
-        'start'=> 2,
-        'finish'=>5
+        'start'=> 1,
+        'finish'=>2
     ),
     Array(
         'title'=>'two',
         'start'=> 1,
-        'finish'=>5,
+        'finish'=>3,
     ),
     Array(
         'title'=>'three',
         'start'=> 3,
-        'finish'=>10,
+        'finish'=>6,
     ),
     Array(
         'title'=>'four',
-        'start'=> 4,
-        'finish'=>12,
+        'start'=> 5,
+        'finish'=>8,
     ),
     Array(
         'title'=>'five',
-        'start'=> 2,
-        'finish'=>5,
+        'start'=> 7,
+        'finish'=>9,
     ),
+    Array(
+        'title'=>'six',
+        'start'=> 10,
+        'finish'=>12,
+    ),
+    
 );
 
 //add length 
@@ -39,7 +45,7 @@ echo '<pre>';
 // print_r($tasks); 
 
 //sort data
-print_r(array_sort($tasks, 'finish'));
+// print_r(array_sort($tasks, 'finish'));
 
 //function for sort associative array by sepicefic key
 function array_sort($array, $on, $order=SORT_ASC)
@@ -77,3 +83,21 @@ function array_sort($array, $on, $order=SORT_ASC)
     return $new_array;
 }
 
+$selected =Array();
+
+array_push($selected);
+$t=0;
+foreach ($tasks as $key => $value) {
+    if($t < $value['start']){
+        array_push($selected,$tasks[$key]);
+        $t=$value['finish'];
+    }
+    
+}
+
+
+print_r($tasks);
+
+echo '<hr>';
+
+print_r($selected);

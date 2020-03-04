@@ -1,4 +1,16 @@
 <!doctype html>
+<?php
+//start operation for task count
+$taskCount=0;
+if(isset($_POST['taskCount']))
+    echo $taskCount = $_POST['taskCount'];
+
+
+//end operation for task count
+    
+
+//end for sort logically    
+?>
 <html lang="en">
 
 <head>
@@ -19,14 +31,14 @@
 
         <div class="row">
             
-        <form action="" method="get" class="col-sm-11 col-md-10 col-lg-8 m-auto">
+        <form action="#" method="post" class="col-sm-11 col-md-10 col-lg-8 m-auto">
             <div class="input-group ">
                     <div class="input-group-prepend ml-auto">
                         <span class="input-group-text">Task Numbers:</span>
                     </div>
                     <div class="input-group-prepend ">
                         <span class="input-group-text">
-                            <select class="custom-select" id="inputGroupSelect01">
+                            <select class="custom-select" name="taskCount" id="inputGroupSelect01">
                                
                                 <?php
                                     for ($i=1;$i<15;$i++) {
@@ -53,86 +65,51 @@
 
 
 
+        <form action="doingTasks.php" method="post">
         <div class="row">
-            <div class="col-sm-6 col-md-4 col-xl-3">
+            
+            <?php
+                for ($i=0;$i<$taskCount;$i++) {
+            ?>
+        <div class="col-sm-6 col-md-4 col-xl-3">
                 <div class="card">
-                    <div class="card-header">
-                        Featured
+                    <div class="card-header text-center">
+                        Task <?php echo $i+1; ?>
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <div class="input-group flex-nowrap">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="addon-wrapping">title</span>
+                            </div>
+                            <input type="text" class="form-control pl-2" name="title<?php echo $i;?>" placeholder="title" aria-label="title" aria-describedby="addon-wrapping">
+                        </div>
+                        <p class="card-text">
+                        <div class="input-group flex-nowrap">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="addon-wrapping">start</span>
+                            </div>
+                            <input type="text" class="form-control pl-2" name="start<?php echo $i;?>" placeholder="start" aria-label="start" aria-describedby="addon-wrapping">
+                        </div>
+                        </p>
+
+                        <div class="input-group flex-nowrap">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="addon-wrapping">finish</span>
+                            </div>
+                            <input type="text" class="form-control pl-2" name="finish<?php echo $i;?>" placeholder="finish" aria-label="finish" aria-describedby="addon-wrapping">
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6 col-md-4 col-xl-3">
-                <div class="card">
-                    <div class="card-header">
-                        Featured
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
+            
 
 
-            <div class="col-sm-6 col-md-4 col-xl-3">
-                <div class="card">
-                    <div class="card-header">
-                        Featured
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="col-sm-6 col-md-4 col-xl-3">
-                <div class="card">
-                    <div class="card-header">
-                        Featured
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-md-4 col-xl-3">
-                <div class="card">
-                    <div class="card-header">
-                        Featured
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-md-4 col-xl-3">
-                <div class="card">
-                    <div class="card-header">
-                        Featured
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
+            <?php
+                }
+            ?>
         </div>
+        <input type="submit" class="form-control" value="submit">
+        </form>
     </div>
 
     <!-- Optional JavaScript -->
