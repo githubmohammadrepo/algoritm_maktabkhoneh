@@ -1,21 +1,27 @@
 <?php
 
-require_once('./knapsack.php');
+$a = Array(
+    [1,],
+    [1,],
+    [1,],
+    [1,],
+    [1,],
+    [1,],
+    [1,1,1,1,1,1,1],
+);
 
-$weight = Array(2,5,8,16);
-$values = Array(4,2,5,15);
 
-$knapsack = new Knapsack($weight, $values);
-
-$names = ['weight','values'];
-
-foreach ($names as $key => $value) {
-    echo $value.'<br>';
-    foreach ($$value as $k => $v) {
-        echo $v . ' - ';
+for($i=count($a)-2;$i>=0; $i--){
+    for($j=1;$j<count($a)-1; $j++){
+        $a[$i][$j]=$a[$i+1][$j]+$a[$i][$j-1];
     }
-
-    echo '<hr>';
+    echo '<br>';    
 }
 
-print_r($knapsack->show());
+foreach ($a as $key => $value) {
+    
+    foreach ($value as $k => $v) {
+        echo $v.' ';
+    }
+    echo '<br>';
+}
